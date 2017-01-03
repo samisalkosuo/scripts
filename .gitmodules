@@ -1,0 +1,3 @@
+[submodule "clpargs"]
+	path = clpargs
+	url = https://github.com/samisalkosuo/clpargs
