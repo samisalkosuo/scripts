@@ -34,11 +34,6 @@ __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
 
-CURRENTDIR=$(pwd)
-
-#source all functions
-cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $CURRENTDIR
-
 #START clpargs config
 source $__dir/clpargs/clpargs.bash 2> /dev/null
 if [ $? -eq 0 ]; then
@@ -74,5 +69,9 @@ set -o nounset
 set -o xtrace
 #END set options
 
+CURRENTDIR=$(pwd)
+
+#source all functions
+cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $CURRENTDIR
 
 #ADD YOUR SCRIPT HERE (AND BELOW)
