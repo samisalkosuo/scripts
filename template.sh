@@ -24,23 +24,18 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 #
-
-#START Bash3 Boilerplate. Copyright (c) 2014, kvz.io
-#template for scripts
-#from: http://kvz.io/blog/2013/11/21/bash-best-practices/
-set -o errexit
-set -o pipefail
-set -o nounset
-# set -o xtrace
+#
+#Uses hints and code from Bash3 Boilerplate. Copyright (c) 2014, kvz.io
+#http://kvz.io/blog/2013/11/21/bash-best-practices/
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
-#END Bash3 Boilerplate.
 
 CURRENTDIR=$(pwd)
+
 #source all functions
 cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $CURRENTDIR
 
@@ -71,5 +66,13 @@ else
 
 fi
 #END clpargs config
+
+#START set options
+set -o errexit
+set -o pipefail
+set -o nounset
+set -o xtrace
+#END set options
+
 
 #ADD YOUR SCRIPT HERE (AND BELOW)

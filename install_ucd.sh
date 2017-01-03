@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#install_ucd.sh - Installs IBM UrbanCodeDeploy Server
+#template.sh - Template for bash scripts. Copy ths to your script, change name and description.
 #
 #The MIT License (MIT)
 #
@@ -24,29 +24,15 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 #
-
-#This script installs IBM UrbanCode Deploy server.
-#More information: https://developer.ibm.com/urbancode/products/urbancode-deploy/
-#Docs: https://www.ibm.com/support/knowledgecenter/SS4GSP/ucd_welcome.html
-
-#UCD admin user name is "admin"
-#This script is combination of three scripts and cleanup may be in order
-
-# START Bash3 Boilerplate. Copyright (c) 2014, kvz.io
-#template for scripts
-#from: http://kvz.io/blog/2013/11/21/bash-best-practices/
-set -o errexit
-set -o pipefail
-set -o nounset
-# set -o xtrace
+#
+#Uses hints and code from Bash3 Boilerplate. Copyright (c) 2014, kvz.io
+#http://kvz.io/blog/2013/11/21/bash-best-practices/
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
-
-# END Bash3 Boilerplate.
 
 CURRENTDIR=$(pwd)
 #source all functions
@@ -78,6 +64,13 @@ else
 
 fi
 #========================================================================
+
+#START set options
+set -o errexit
+set -o pipefail
+set -o nounset
+set -o xtrace
+#END set options
 
 JDK8_URL="https://edelivery.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u112-linux-x64.tar.gz"
 
