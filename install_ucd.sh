@@ -133,7 +133,11 @@ chkconfig ucdserver on
 service ucdserver start
 
 echo "UCD server started."
-cd $__currentDir
+
+cd $__tempDir
+
+echo "sleep 30 seconds so that server is started..."
+sleep 30
 
 echo "Installing UCD agent..."
 
@@ -150,7 +154,7 @@ n=0
 until [ $n -ge 15 ]
 do
    $CMD && break
-   echo "Download failed.. trying again..."
+   echo "Download failed.. trying again after 20 seconds..."
    n=$[$n+1]
    sleep 20
 done
@@ -189,11 +193,12 @@ chkconfig $AGENT_NAME on
 
 service $AGENT_NAME start
 
-cd $__currentDir
+cd $__tempDir
+
+echo "sleep 30 seconds so that UCD agent is started..."
+sleep 30
 
 #install UCD CLI toolkit
-#sleep a while so that UCD server is started
-sleep 30
 
 UCD_SERVER_URL="https://$UCD_SERVER_IP:8443"
 CMD="wget --no-check-certificate $UCD_SERVER_URL/tools/udclient.zip"
@@ -202,7 +207,7 @@ n=0
 until [ $n -ge 5 ]
 do
    $CMD && break
-   echo "Download failed.. trying again..."
+   echo "Download failed.. trying again after 15 seconds..."
    n=$[$n+1]
    sleep 15
 done
@@ -215,8 +220,6 @@ mv udclient $UDCLIENT_DIR
 
 EXECUTE_DEFAULT_UCD_CONFIG=true
 if [[ "$EXECUTE_DEFAULT_UCD_CONFIG" == "true" ]] ; then
-  #sleep a while so that agent is available
-  sleep 30
 
   #add default agent
   UCD_ADMIN_USER=admin
