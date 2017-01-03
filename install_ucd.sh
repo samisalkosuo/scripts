@@ -72,8 +72,6 @@ set -o nounset
 set -o xtrace
 #END set options
 
-JDK8_URL="https://edelivery.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u112-linux-x64.tar.gz"
-
 echo "Installing UCD..."
 
 if [[ "$INSTALL_JDK8" == "true" ]] ; then
@@ -99,7 +97,7 @@ INSTALL_PROPS=install.properties
 
 PASSWORD=$UCD_SERVER_ADMIN_PASSWORD
 
-echo nonInteractive=true >> $INSTALL_PROPS 
+echo nonInteractive=true >> $INSTALL_PROPS
 echo server.initial.password=$PASSWORD >> $INSTALL_PROPS
 echo hibernate.connection.password=$PASSWORD >> $INSTALL_PROPS
 echo install.java.home=/usr/java/latest >> $INSTALL_PROPS
@@ -163,8 +161,8 @@ cd ibm-ucd-agent-install
 PROPSFILE=agent.install.properties
 cp example.agent.install.properties $PROPSFILE
 
-changeString $PROPSFILE "#IBM UrbanCode Deploy/java.home=" "IBM UrbanCode Deploy/java.home=/usr/java/latest" 
-changeString $PROPSFILE "locked/agent.jms.remote.host=localhost" "locked/agent.jms.remote.host=$UCD_SERVER_IP" 
+changeString $PROPSFILE "#IBM UrbanCode Deploy/java.home=" "IBM UrbanCode Deploy/java.home=/usr/java/latest"
+changeString $PROPSFILE "locked/agent.jms.remote.host=localhost" "locked/agent.jms.remote.host=$UCD_SERVER_IP"
 changeString $PROPSFILE "#server.url=" "server.url=https://$UCD_SERVER_IP:8443"
 changeString $PROPSFILE "locked/agent.name=ibm-ucdagent" "locked/agent.name=$AGENT_NAME"
 changeString $PROPSFILE "locked/agent.home=/opt/urbancode/ibm-ucdagent" "locked/agent.home=$AGENTDIR"
