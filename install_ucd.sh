@@ -63,13 +63,13 @@ set -o nounset
 #set -o xtrace
 #END set options
 
-local __currentDir=$(pwd)
+__currentDir=$(pwd)
 
 #source functions
 source $__dir/functions/changeString.sh
 source $__dir/functions/installJDK8.sh
 
-local __tempDir=temp_${BASH_SOURCE[0]}
+__tempDir=temp_${BASH_SOURCE[0]}
 mkdir $__tempDir
 cd $__tempDir
 
