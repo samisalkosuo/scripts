@@ -69,8 +69,8 @@ __currentDir=$(pwd)
 source $__dir/functions/changeString.sh
 source $__dir/functions/installJDK8.sh
 
-__tempDir=temp_${BASH_SOURCE[0]}
-mkdir $__tempDir
+__tempDir=$__currentDir/temp_$__base
+mkdir -p $__tempDir
 cd $__tempDir
 
 echo "Installing UCD..."
