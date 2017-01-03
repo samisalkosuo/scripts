@@ -87,11 +87,12 @@ echo "Extracting UCD binary..."
 unzip -q *.zip
 echo "Extracting UCD binary... done."
 
-echo "Move ucd install dir under /...."
-mv ibm-ucd-install /
+#echo "Move ucd install dir under /...."
+#mv ibm-ucd-install /
 
-INSTALL_DIR=/ibm-ucd-install
-cd $INSTALL_DIR
+#INSTALL_DIR=$__currentDir/ibm-ucd-install
+#cd $INSTALL_DIR
+cd ibm-ucd-install
 
 #modify install properties file
 INSTALL_PROPS=install.properties
@@ -122,7 +123,7 @@ changeString $SVC_FILE @SERVER_USER@ root
 changeString $SVC_FILE @SERVER_GROUP@ root
 
 #change flags after changing the file, above commands create new file and resets flags
-chmod 755 $SVC_FILE
+#chmod 755 $SVC_FILE
 
 cd /etc/init.d
 ln -s /opt/ibm-ucd/server/bin/init/server ucdserver
@@ -132,6 +133,7 @@ chkconfig ucdserver on
 service ucdserver start
 
 echo "UCD server started."
+cd $__currentDir
 
 echo "Installing UCD agent..."
 
@@ -175,7 +177,7 @@ changeString $AGENTDIR/bin/init/agent "AGENT_USER=" "AGENT_USER=$USER"
 changeString $AGENTDIR/bin/init/agent "AGENT_GROUP=" "AGENT_GROUP=$GROUP"
 mv $AGENTDIR/bin/init/agent $AGENTDIR/bin/init/$AGENT_NAME
 
-chmod 755 $AGENTDIR/bin/init/$AGENT_NAME
+#chmod 755 $AGENTDIR/bin/init/$AGENT_NAME
 
 cp $AGENTDIR/bin/init/$AGENT_NAME /etc/rc.d/init.d/
 ln -s /etc/rc.d/init.d/$AGENT_NAME /etc/rc.d/rc5.d/S98$AGENT_NAME
@@ -186,6 +188,8 @@ chkconfig --add $AGENT_NAME
 chkconfig $AGENT_NAME on
 
 service $AGENT_NAME start
+
+cd $__currentDir
 
 #install UCD CLI toolkit
 #sleep a while so that UCD server is started
