@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#template.sh - Template for bash scripts. Copy ths to your script, change name and description.
+#install_ucd.sh - Installs IBM UrbanCode Deploy Server.
 #
 #The MIT License (MIT)
 #
@@ -23,10 +23,7 @@
 #LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
-#
-#
-#Uses hints and code from Bash3 Boilerplate. Copyright (c) 2014, kvz.io
-#http://kvz.io/blog/2013/11/21/bash-best-practices/
+
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -34,7 +31,6 @@ __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
 
-#========================================================================
 #clpargs config
 source $__dir/clpargs/clpargs.bash 2> /dev/null
 if [ $? -eq 0 ]; then
@@ -59,7 +55,6 @@ else
   exit 1
 
 fi
-#========================================================================
 
 #START set options
 set -o errexit
@@ -68,9 +63,15 @@ set -o nounset
 #set -o xtrace
 #END set options
 
-CURRENTDIR=$(pwd)
-#source all functions
-cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $CURRENTDIR
+local __currentDir=$(pwd)
+
+#source functions
+source $__dir/functions/changeString.sh
+source $__dir/functions/installJDK8.sh
+
+local __tempDir=temp_${BASH_SOURCE[0]}
+mkdir $__tempDir
+cd $__tempDir
 
 echo "Installing UCD..."
 
@@ -227,3 +228,5 @@ fi
 echo "UCD Server installed."
 echo "UCD URL: https://$UCD_SERVER_IP:8443/"
 echo "UCD admin user name is \"admin\""
+
+cd $__currentDir

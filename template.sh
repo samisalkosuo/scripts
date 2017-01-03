@@ -69,9 +69,9 @@ set -o nounset
 set -o xtrace
 #END set options
 
-CURRENTDIR=$(pwd)
+local __currentDir=$(pwd)
 
 #source all functions
-cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $CURRENTDIR
+cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $__currentDir
 
 #ADD YOUR SCRIPT HERE (AND BELOW)
