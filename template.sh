@@ -27,6 +27,8 @@
 #
 #Uses hints and code from Bash3 Boilerplate. Copyright (c) 2014, kvz.io
 #http://kvz.io/blog/2013/11/21/bash-best-practices/
+#and
+#https://github.com/kvz/bash3boilerplate
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -66,10 +68,10 @@ fi
 set -o errexit
 set -o pipefail
 set -o nounset
-set -o xtrace
+#set -o xtrace
 #END set options
 
-local __currentDir=$(pwd)
+__currentDir=$(pwd)
 
 #source all functions
 cd $__dir/functions;for f in *; do [[ -f "$f" ]] && source "$f"; done;cd $__currentDir

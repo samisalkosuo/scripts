@@ -24,6 +24,13 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+#This script installs UCD Server.
+#UCDSERVER_BINARY_URL environment variable, or command line parameter, points
+#to UCD install zip file or it can URL and file downloaded from HTTP/FTP server.
+#
+#Easy way to get UCD Server is by downloading a free trial from:
+#https://developer.ibm.com/urbancode/products/urbancode-deploy/
+
 
 # Set magic variables for current file & dir
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -40,7 +47,7 @@ if [ $? -eq 0 ]; then
 
   #define arguments to use (optional)
   #syntax: clpargs_define <NAME> <VALUE_NAME> <DESCRIPTION> <REQUIRED: true | false> [<DEFAULT_VALUE>]
-  clpargs_define UCDSERVER_BINARY_URL "url" "URL to UCD binary file." true
+  clpargs_define UCDSERVER_BINARY_URL "url" "URL to UCD binary file. Or path to UCD binary file" true
   clpargs_define INSTALL_JDK8 "bool" "Install JDK8: true/false." false "true"
   clpargs_define UCD_SERVER_ADMIN_PASSWORD "pwd" "Admin password." false "passw0rd"
   clpargs_define AGENT_NAME "str" "Agent name." false "default-ucd-agent"
@@ -79,19 +86,19 @@ if [[ "$INSTALL_JDK8" == "true" ]] ; then
   installJDK8
 fi
 
-echo "Downloading UCD binaries..."
-
-wget $UCDSERVER_BINARY_URL
+if [ -f $UCDSERVER_BINARY_URL ];
+then
+   echo "Found UCD binary file."
+   cp $UCDSERVER_BINARY_URL .
+else
+  echo "Downloading UCD binaries..."
+  wget $UCDSERVER_BINARY_URL
+fi
 
 echo "Extracting UCD binary..."
 unzip -q *.zip
 echo "Extracting UCD binary... done."
 
-#echo "Move ucd install dir under /...."
-#mv ibm-ucd-install /
-
-#INSTALL_DIR=$__currentDir/ibm-ucd-install
-#cd $INSTALL_DIR
 cd ibm-ucd-install
 
 #modify install properties file
@@ -121,9 +128,6 @@ SVC_FILE=/opt/ibm-ucd/server/bin/init/server
 
 changeString $SVC_FILE @SERVER_USER@ root
 changeString $SVC_FILE @SERVER_GROUP@ root
-
-#change flags after changing the file, above commands create new file and resets flags
-#chmod 755 $SVC_FILE
 
 cd /etc/init.d
 ln -s /opt/ibm-ucd/server/bin/init/server ucdserver
@@ -180,8 +184,6 @@ cp $AGENTDIR/bin/init/agent  $AGENTDIR/bin/init/agent.original
 changeString $AGENTDIR/bin/init/agent "AGENT_USER=" "AGENT_USER=$USER"
 changeString $AGENTDIR/bin/init/agent "AGENT_GROUP=" "AGENT_GROUP=$GROUP"
 mv $AGENTDIR/bin/init/agent $AGENTDIR/bin/init/$AGENT_NAME
-
-#chmod 755 $AGENTDIR/bin/init/$AGENT_NAME
 
 cp $AGENTDIR/bin/init/$AGENT_NAME /etc/rc.d/init.d/
 ln -s /etc/rc.d/init.d/$AGENT_NAME /etc/rc.d/rc5.d/S98$AGENT_NAME
