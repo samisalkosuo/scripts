@@ -47,7 +47,7 @@ if [ $? -eq 0 ]; then
 
   #define arguments to use (optional)
   #syntax: clpargs_define <NAME> <VALUE_NAME> <DESCRIPTION> <REQUIRED: true | false> [<DEFAULT_VALUE>]
-  clpargs_define UCDSERVER_BINARY_URL "url" "URL to UCD binary file. Or path to UCD binary file" true
+  clpargs_define UCDSERVER_BINARY_URL "url" "URL to UCD binary file. Or full path to UCD binary file" true
   clpargs_define INSTALL_JDK8 "bool" "Install JDK8: true/false." false "true"
   clpargs_define UCD_SERVER_ADMIN_PASSWORD "pwd" "Admin password." false "passw0rd"
   clpargs_define AGENT_NAME "str" "Agent name." false "default-ucd-agent"
