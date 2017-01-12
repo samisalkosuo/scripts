@@ -25,7 +25,7 @@
 #THE SOFTWARE.
 
 #This script installs UCD Server.
-#UCDSERVER_BINARY_URL environment variable, or command line parameter, points
+#UCDSERVER_BINARY environment variable, or command line parameter, points
 #to UCD install zip file or it can URL and file downloaded from HTTP/FTP server.
 #
 #Easy way to get UCD Server is by downloading a free trial from:
@@ -47,8 +47,9 @@ if [ $? -eq 0 ]; then
 
   #define arguments to use (optional)
   #syntax: clpargs_define <NAME> <VALUE_NAME> <DESCRIPTION> <REQUIRED: true | false> [<DEFAULT_VALUE>]
-  clpargs_define UCDSERVER_BINARY_URL "url" "URL to UCD binary file. Or full path to UCD binary file" true
+  clpargs_define UCDSERVER_BINARY "url or file" "URL or full path to UCD binary file." true
   clpargs_define INSTALL_JDK8 "bool" "Install JDK8: true/false." false "true"
+  clpargs_define JDK8_BINARY "url or file" "JDK8 binary file." false "https://edelivery.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.rpm"
   clpargs_define UCD_SERVER_ADMIN_PASSWORD "pwd" "Admin password." false "passw0rd"
   clpargs_define AGENT_NAME "str" "Agent name." false "default-ucd-agent"
 
@@ -83,16 +84,16 @@ cd $__tempDir
 echo "Installing UCD..."
 
 if [[ "$INSTALL_JDK8" == "true" ]] ; then
-  installJDK8
+  installJDK8 $JDK8_BINARY
 fi
 
-if [ -f $UCDSERVER_BINARY_URL ];
+if [ -f $UCDSERVER_BINARY ];
 then
    echo "Found UCD binary file."
-   cp $UCDSERVER_BINARY_URL .
+   cp $UCDSERVER_BINARY .
 else
   echo "Downloading UCD binaries..."
-  wget $UCDSERVER_BINARY_URL
+  wget $UCDSERVER_BINARY
 fi
 
 echo "Extracting UCD binary..."
