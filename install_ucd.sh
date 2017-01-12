@@ -49,7 +49,7 @@ if [ $? -eq 0 ]; then
   #syntax: clpargs_define <NAME> <VALUE_NAME> <DESCRIPTION> <REQUIRED: true | false> [<DEFAULT_VALUE>]
   clpargs_define UCDSERVER_BINARY "url or file" "URL or full path to UCD binary file." true
   clpargs_define INSTALL_JDK8 "bool" "Install JDK8: true/false." false "true"
-  clpargs_define JDK8_BINARY "url or file" "JDK8 binary file." false "https://edelivery.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.rpm"
+  clpargs_define JDK8_BINARY "url or file" "URL or full path to JDK8 binary file." false "https://edelivery.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.rpm"
   clpargs_define UCD_SERVER_ADMIN_PASSWORD "pwd" "Admin password." false "passw0rd"
   clpargs_define AGENT_NAME "str" "Agent name." false "default-ucd-agent"
 
