@@ -26,7 +26,7 @@
 
 #This script installs UCD Server.
 #UCDSERVER_BINARY environment variable, or command line parameter, points
-#to UCD install zip file or it can URL and file downloaded from HTTP/FTP server.
+#to UCD install zip file or it can HTTP/FTP URL to a file.
 #
 #Easy way to get UCD Server is by downloading a free trial from:
 #https://developer.ibm.com/urbancode/products/urbancode-deploy/

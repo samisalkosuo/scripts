@@ -13,7 +13,12 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 - for f in *; do [[ -f "$f" ]] && source "$f"; done
 
-# License
+## Scripts
+
+- install_ucd.sh - Installs IBM UrbanCode Deploy Server.
+- username.sh - Username generator.
+
+## License
 
 MIT
 

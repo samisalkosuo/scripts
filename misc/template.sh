@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#template.sh - Template for bash scripts. Copy ths to your script, change name and description.
+#template.sh - Template for bash scripts. Use as starting point of your script, change name and description.
 #
 #The MIT License (MIT)
 #

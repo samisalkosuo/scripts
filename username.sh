@@ -73,5 +73,3 @@ __currentDir=$(pwd)
 
 #generate COUNT usernames
 python $__dir/python/generate_username.py $FORMAT $COUNT
-
-
