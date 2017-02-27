@@ -15,6 +15,7 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 ## Scripts
 
+- install_lighttpd.sh - Install and start lighttpd HTTP server.
 - install_ucd.sh - Installs IBM UrbanCode Deploy Server.
 - username.sh - Username generator.
 
