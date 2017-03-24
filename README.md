@@ -13,6 +13,10 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 - for f in *; do [[ -f "$f" ]] && source "$f"; done
 
+## Warning
+
+Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so. You have been warned.
+
 ## Scripts
 
 - install_lighttpd.sh - Install and start lighttpd HTTP server.
