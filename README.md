@@ -23,6 +23,15 @@ Some or more of these scripts are not, as they say, "production quality". There 
 - install_ucd.sh - Installs IBM UrbanCode Deploy Server.
 - username.sh - Username generator.
 
+## Directories
+
+- clpargs - Command line arguments for bash scripts (without getopts).
+- functions - Helper functions for scripts
+- misc - Uncategorized stuff
+- python - Python scripts.
+- was - Scripts related to IBM WebSphere Application Server.
+
+
 ## License
 
 MIT
