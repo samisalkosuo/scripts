@@ -15,7 +15,7 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 ## Warning
 
-Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so. You have been warned.
+Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so on. You have been warned.
 
 ## Scripts
 
