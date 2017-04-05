@@ -17,10 +17,13 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so on. You have been warned.
 
+Scripts are usually tested with RedHat Linux, or CentOS. Sometime also with Mac and Cygwin.
+
 ## Scripts
 
 - install_lighttpd.sh - Install and start lighttpd HTTP server.
 - install_ucd.sh - Installs IBM UrbanCode Deploy Server.
+- setup_bluemix_cli.sh - Instals IBM Bluemix and Cloud Foundry CLI tools.
 - username.sh - Username generator.
 
 ## Directories
