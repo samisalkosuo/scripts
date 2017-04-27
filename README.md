@@ -9,21 +9,26 @@ It's included as submodule and to get it, please clone this repository using:
 
 - git clone --recursive https://github.com/samisalkosuo/scripts
 
+or clone develop-branch:
+
+- git clone -b develop --recursive https://github.com/samisalkosuo/scripts
+
 Directory 'functions' includes bash-functions. If you want to use them in your shell/scripts, go to functions-directory and execute:
 
 - for f in *; do [[ -f "$f" ]] && source "$f"; done
 
 ## Warning
 
-Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so on. You have been warned.
+Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so on.
 
-Scripts are usually tested with RedHat Linux, or CentOS. Sometime also with Mac and Cygwin.
+Scripts are usually tested with RedHat Linux 7, or CentOS 7. Occasionally also with Mac and Cygwin.
 
 ## Scripts
 
-- install_lighttpd.sh - Install and start lighttpd HTTP server.
+- install_lighttpd.sh - Installs and start lighttpd HTTP server.
 - install_ucd.sh - Installs IBM UrbanCode Deploy Server.
-- setup_bluemix_cli.sh - Instals IBM Bluemix and Cloud Foundry CLI tools.
+- install_ucd_agent.sh - Installs IBM UrbanCode Deploy Agent.
+- setup_bluemix_cli.sh - Installs CLI tools for IBM Bluemix.
 - username.sh - Username generator.
 
 ## Directories
