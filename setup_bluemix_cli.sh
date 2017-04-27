@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#setup_bluemix_cli.sh - Installs Cloud Foundry, Kubernetes and IBM Bluemix CLI tools.
+#setup_bluemix_cli.sh - Installs CLI tools for IBM Bluemix.
 #
 #The MIT License (MIT)
 #
@@ -41,12 +41,11 @@ source $__dir/clpargs/clpargs.bash 2> /dev/null
 if [ $? -eq 0 ]; then
 
   #script description
-  clpargs_program_description "Installs Bluemix and Cloud Foundry CLI tools for RHEL Linux."
+  clpargs_program_description "Installs CLI tools for IBM Bluemix."
 
   #define arguments to use (optional)
   #syntax: clpargs_define <NAME> <VALUE_NAME> <DESCRIPTION> <REQUIRED: true | false> [<DEFAULT_VALUE>]
 
-  clpargs_define OS_TYPE "ostype" "OS type: rhel, ubuntu or mac." false "rhel"
   clpargs_define BLUEMIX_CLI_URL "url" "URL of Bluemix CLI tool install file." false "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/Bluemix_CLI_0.5.1_amd64.tar.gz"
   clpargs_define KUBERNETES_CLI_URL "url" "URL of Linux Kubernetes CLI tool." false "http://storage.googleapis.com/kubernetes-release/release/v1.5.3/bin/linux/amd64/kubectl"
 
@@ -123,7 +122,7 @@ echo ""
 
 echo ""
 echo "Kubernetes CLI version:"
-kubectl version
+kubectl version || true
 echo ""
 
 echo "CF version:"
@@ -132,3 +131,4 @@ echo ""
 
 echo "BX version:"
 bx -v
+
