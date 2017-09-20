@@ -37,6 +37,14 @@ __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
 
 #START clpargs config
+__clpargs_file=$__dir/clpargs/clpargs.bash
+if [ ! -f $__clpargs_file ];
+then
+  #clpargs.bash not found in subdirectory
+  #try one dir above
+  __clpargs_file=$__dir/../clpargs/clpargs.bash
+fi
+
 source $__dir/clpargs/clpargs.bash 2> /dev/null
 if [ $? -eq 0 ]; then
 
