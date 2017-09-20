@@ -21,13 +21,14 @@ Directory 'functions' includes bash-functions. If you want to use them in your s
 
 Some or more of these scripts are not, as they say, "production quality". There are hardcoded stuff, stuff related to very specific environments or setup and so on.
 
-Scripts are usually tested with RedHat Linux 7, or CentOS 7. Occasionally also with Mac and Cygwin.
+Scripts are usually tested with RedHat Linux 7, or CentOS 7. Occasionally also with Ubuntu, Mac and Cygwin.
 
 ## Scripts
 
 - install_lighttpd.sh - Installs and start lighttpd HTTP server.
 - install_ucd.sh - Installs IBM UrbanCode Deploy Server.
 - install_ucd_agent.sh - Installs IBM UrbanCode Deploy Agent.
+- rss2csv.sh - Reads RSS and writes CSV. Uses Python script in python-dir.
 - setup_bluemix_cli.sh - Installs CLI tools for IBM Bluemix.
 - username.sh - Username generator.
 
@@ -38,7 +39,7 @@ Scripts are usually tested with RedHat Linux 7, or CentOS 7. Occasionally also w
 - misc - Uncategorized stuff
 - python - Python scripts.
 - was - Scripts related to IBM WebSphere Application Server.
-
+- wexca - Scripts related to IBM Watson Explorer Content Analytics.
 
 ## License
 
