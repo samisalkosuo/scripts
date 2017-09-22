@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#install_and_update.sh - Install and update IBM Watson Explorer Content Analytics
+#install_and_update.sh - Install and update IBM Watson Explorer Content Analytics. Tested with WEXCA 11.0.2 and update 11.0.2.1.
 #
 #The MIT License (MIT)
 #
@@ -115,7 +115,6 @@ if [[ "$INSTALL_TYPE" == "additional" ]] ; then
 	__install_type=ADDITIONAL
 fi 
 
-
 #source functions
 source $__dir/../functions/changeString.sh
 
@@ -181,7 +180,7 @@ echo "DATA_STORAGE_PORT=1527" >> $__rsp_file_name
 echo "SEARCH_SERVER_PORT=8394" >> $__rsp_file_name
 echo "SEARCH_APP_HTTP_PORT=${__search_http_port}" >> $__rsp_file_name
 
-echo "Installing... silent install log: /tmp/silentInstallLg"
+echo "Installing... If this fails, silent install log is here: /tmp/silentInstallExit.log"
 ./install.bin -i silent -f $__rsp_file_name
 echo "Installing... Done. "
 
